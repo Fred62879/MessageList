@@ -1,0 +1,14 @@
+const appReducers ({
+    count: counterReducer,
+    input: inputReducer,
+    contents: storeReducer,
+    displayCho: displayReducer,
+    clearCho: clearReducer
+});
+
+const rootReducers ({
+    
+    return appReducer(state, action);
+});
+
+export default rootReducers;

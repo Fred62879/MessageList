@@ -1,0 +1,46 @@
+import { combineReducers } from 'redux';
+
+const counterReducer = (count = 0, action) => {
+    if (action.type === 'INCREMENT_COUNTER') {
+        return count + action.increment;
+    }
+    return count;
+};
+
+
+let messages = JSON.stringify({ messages: [ "Hi there!", "Hi"] });
+const inputReducer = (input = 'Your message comes here!', action) => {
+    if (action.type === 'MESS_INPUT')
+        return action.input;
+    return input;
+};
+
+let jcontents = JSON.parse(messages).messages;
+const storeReducer = (contents = jcontents, action) => {
+    if (action.type === 'MESS_STORE') {
+        contents.push(action.newmess);
+        return contents;
+    }
+    return contents;
+};
+
+const displayReducer = (display = 0, action) => {
+    if (action.type === 'MESS_DISPLAY')
+	return 109; // action.display;
+    return 0;
+};
+
+const clearReducer = (clear = 0, action) => {
+    if (action.type === 'MESS_CLEAR')
+	if (action.clear === 1) jcontents = [];
+    return jcontents;
+}
+
+export default combineReducers({
+    // name consistently as with above reducers
+    count: counterReducer,
+    input: inputReducer,
+    contents: storeReducer,
+    display: displayReducer,
+    clear: clearReducer
+});
