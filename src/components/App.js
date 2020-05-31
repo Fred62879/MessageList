@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Messform from './Messform';
 import Messarea from './Messarea';
 import About from './About';
+import View from './View';
 import { toggle } from '../actions';
 import '../App.css';
 
@@ -13,7 +14,7 @@ class App extends React.Component {
     render() {
 	let page;
 	if (this.props.page === 0)
-	    page = <div><Messform/><Messarea/></div>;
+	    page = <div><Messform/><Messarea/><View/></div>;
 	else
 	    page = <About/>;
 	return (

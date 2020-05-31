@@ -21,13 +21,19 @@ const listyle = {
     margin: '0 0',
     'text-decoration': 'none'
 };
+
 const jcontents = JSON.parse(messages).messages;
-const licontents = jcontents.map((c) => <div><li><div style={listyle}>{c}</div></li><br></br></div>);
+    const licontents = jcontents.map((c) =>
+				     <div id='a'>
+				     <li><div style={listyle}>{c}
+				     </div></li>
+				     <br></br>
+				     </div>);
 
 const storeReducer = (contents = licontents, action) => {
     switch (action.type) {
     case 'MESS_ADD':
-	const newli = (<div><li><div style={listyle}>{action.newmess}</div></li><br></br></div>);
+	const newli = (<div id={action.newmess}><li><div style={listyle}>{action.newmess}</div></li><br></br></div>);
 	return [...contents, newli];
     case 'MESS_CLEAR':
 	return [];
@@ -47,11 +53,18 @@ const clearReducer = (clearCho = 0, action) => {
 	if (action.clear === 1) return [];
     return jcontents;
 }
-    
+
+const zoomReducer = (detail = '', action) => {
+    if (action.type === 'DETAIL_VIEW')
+	return action.content;
+    return detail;
+}
+
 export default combineReducers({
     page: pageReducer,
     input: inputReducer,
     contents: storeReducer,
     displayCho: displayReducer,
-    clearCho: clearReducer
+    clearCho: clearReducer,
+    detail: zoomReducer
 });

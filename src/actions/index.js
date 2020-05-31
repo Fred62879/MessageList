@@ -39,3 +39,10 @@ export const clear = cho => {
 	clearCho: cho
     };
 }
+
+export const zoom = detail => {
+    return {
+	type: 'DETAIL_VIEW',
+	content: detail
+    }
+}
