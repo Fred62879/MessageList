@@ -13,11 +13,6 @@ class Messform extends React.Component {
         this.props.store('MESS_ADD', this.props.input);
     }
 
-    _onClear = (event) => {
-	event.preventDefault();
-        this.props.load('Your message comes here!');
-    }
-
     render() {
         return(
                 <form id="messform">
@@ -25,8 +20,7 @@ class Messform extends React.Component {
 	        <textarea id="newmess" onChange={this._onChange} placeholder="Your message comes here!"></textarea>
 	        <br></br>
 	        <button id="submit" onClick={this._onSubmit}>Submit</button>
-		<input type="reset" defaultValue="Reset" />  
-	        <button id="clear" onClick={this._onClear}>Clear</button>
+		<input type="reset" defaultValue="Reset" />
                 </form>)
     }
 }
