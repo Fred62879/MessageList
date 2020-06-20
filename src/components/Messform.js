@@ -10,7 +10,7 @@ class Messform extends React.Component {
 
     _onSubmit = (event) => {
         event.preventDefault();
-        this.props.store('MESS_ADD', this.props.input);
+        this.props.store('MESS_ADD', this.props.input, 'Anonymous');
     }
 
     render() {

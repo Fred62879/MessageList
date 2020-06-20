@@ -19,10 +19,11 @@ export const load = txt => {
     };
 }
 
-export const store = (tp, txt) => {
+export const store = (tp, txt, un) => {
     return {
         type: tp, // 'MESS_ADD', 'MESS_CLEAR'
-        newmess: txt
+        newmess: txt,
+	username: un
     };
 }
 
@@ -37,6 +38,13 @@ export const clear = cho => {
     return {
 	type: 'MESS_CLEAR',
 	clearCho: cho
+    };
+}
+
+export const login = username => {
+    return {
+	type: 'Login',
+	username: username
     };
 }
 

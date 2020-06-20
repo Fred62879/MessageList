@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import mongoose from 'mongoose';
 import Navbar from './Navbar';
 import Messform from './Messform';
 import Messarea from './Messarea';
@@ -7,6 +8,7 @@ import About from './About';
 import View from './View';
 import { toggle } from '../actions';
 import '../App.css';
+
 
 // const App = () => {
 class App extends React.Component {
