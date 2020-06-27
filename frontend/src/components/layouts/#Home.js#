@@ -1,0 +1,13 @@
+import react from 'react';
+
+class Home extends React.Component {
+    render() {
+	return (
+		<div>
+		<Messform/>
+		<Messarea/>
+		<View/>
+		</div>;
+	);
+    }
+}
