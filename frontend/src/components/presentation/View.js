@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { detail } from '../../actions';
+import { detail } from '../../actions/messAction';
 
 class View extends React.Component {
 

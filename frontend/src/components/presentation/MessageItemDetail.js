@@ -6,8 +6,9 @@ class MessageItemDetail extends Component {
     render(){
         return (
             <div>
-                <h2>{this.props.data.title}</h2>
-                <p>{this.props.data.body}</p>
+                <h2>Message Detail</h2>
+		<p>Hi there, the message stored is {this.props.data.mess}</p>
+                <p>It is written by {this.props.data.username}</p>
             </div>
         )
     }
@@ -16,8 +17,8 @@ class MessageItemDetail extends Component {
 MessageItemDetail.propTypes = {
     data: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        body: PropTypes.string.isRequired
+        mess: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired
     })
 };
 

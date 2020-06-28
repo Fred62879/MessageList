@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggle } from '../../actions';
+import { toggle } from '../../actions/messAction';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 

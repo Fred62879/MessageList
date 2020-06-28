@@ -1,10 +1,8 @@
-import React, { component } from 'react';
-import { connect } from 'react-redux';
-import { Route, BrowserRouter } from 'react-router-dom';
-// import mongoose from 'mongoose';
 import './App.css';
-import { Provider } from 'react-redux';
 import store from './stores/store';
+import React, { component } from 'react';
+import { Provider, connect } from 'react-redux';
+import { Route, BrowserRouter } from 'react-router-dom';
 
 import Layout from './components/layouts/Layout.js';
 import Home from './components/layouts/Home.js';
@@ -12,7 +10,6 @@ import About from './components/layouts/About.js';
 import MessArticle from './components/containers/MessArticle';
 
 
-// const App = () => {
 class App extends React.Component {
 
     render() {
@@ -29,13 +26,5 @@ class App extends React.Component {
 	);
     }
 }
-
-/*
-const mapStateToProps = (state) => {
-    return { page: state.page };
-}
-
-export default connect(mapStateToProps, { toggle })(App);
-*/
 
 export default App;

@@ -1,6 +1,7 @@
 import React from 'react';
+import { uuid } from 'uuidv4';
 import { connect } from 'react-redux';
-import { load, store } from '../../actions';
+import { load, store } from '../../actions/messAction';
 
 class Messform extends React.Component {
 
@@ -10,7 +11,8 @@ class Messform extends React.Component {
 
     _onSubmit = (event) => {
         event.preventDefault();
-        this.props.store('MESS_ADD', [], {}, this.props.input, 'Anonymous');
+	
+        this.props.store('MESS_ADD', [], {}, uuid(), this.props.input, 'Anonymous');
     }
 
     render() {

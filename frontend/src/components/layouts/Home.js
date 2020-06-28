@@ -1,7 +1,6 @@
 import React from 'react';
 import Messform from '../presentation/Messform.js';
 import Messarea from '../presentation/Messarea.js';
-import View from '../presentation/View.js';
 
 class Home extends React.Component {
     render() {
@@ -9,7 +8,6 @@ class Home extends React.Component {
 		<div>
 		<Messform/>
 		<Messarea/>
-		<View/>
 		</div>
 	);
     }

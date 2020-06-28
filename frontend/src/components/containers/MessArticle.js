@@ -1,33 +1,24 @@
 import React, { Component} from 'react';
 import MessageItemDetail from '../presentation/MessageItemDetail';
 import { connect } from 'react-redux'
-import { fetchMessItem } from '../../actions/index'
+import { messItemLoading, fetchMessItem } from '../../actions/messAction'
+
 
 class MessArticle extends Component {
-
-    componentDidMount(){
-
-        var fakeMessItem = {
-            id: '1',
-            title: 'Mad owl chases car',
-            teaser: 'Mad owl seen tormenting drivers in Morecambe',
-            body: `Morecambe - Tuesday 8th August 2017
-
-            Yesterday evening motorists were left running for their lives as a mad owl began a campaign of terror on rush traffic. 
-            Eye Witness, Eric Barnes said "When I heard it Squawk in the sky above me, I thought I was done for"`
-        };
-        
-        this.props.dispatch(fetchMessItem(fakeMessItem));
+    
+    componentDidMount() {
+	console.log(this.props.match.params.id);
+        this.props.dispatch(fetchMessItem(this.props.match.params.id));
     }
 
     render(){
-        let { messItem } = this.props; 
+        let { messItem } = this.props;
+	console.log(this.props.itemLoading);
 
         return (
             <div>
-                <h2>News Story</h2>
                 <ul>
-                    { messItem ? <MessageItemDetail data={messItem} /> : null}
+		{ !this.props.itemLoading ? <MessageItemDetail data={messItem} /> : <div>Loading</div>}
                 </ul>
             </div>
         )
@@ -36,7 +27,8 @@ class MessArticle extends Component {
 
 const mapStateToProps = state => {
     return {
-        messItem: state.contents.item
+        messItem: state.contents.item,
+	itemLoading: state.contents.itemLoading
     }
 }
 

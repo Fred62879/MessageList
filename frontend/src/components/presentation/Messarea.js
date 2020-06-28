@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { display, store, detail } from '../../actions';
+import { display, store, detail } from '../../actions/messAction';
 import Messages from '../containers/Messages';
 
 class Messarea extends React.Component {

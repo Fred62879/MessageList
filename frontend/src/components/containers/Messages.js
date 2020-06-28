@@ -1,48 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { display, store, detail } from '../../actions';
 import MIL from '../presentation/MessageItemListing';
-import { fetchMessages } from '../../actions/index';
+import { display, store, detail, fetchMessages } from '../../actions/messAction';
 
 class Messages extends Component {
-    getEventTarget(e) {
-	e = e || window.event;
-	return e.target || e.srcElement; 
-    }
-    
-    _onView = (event) => {
-	var target = this.getEventTarget(event);
-	this.props.detail(target.innerHTML);
-    }
 
     componentDidMount(){
-
-         const fakeMess = [
-	     {
-		 "id": "1",
-		 "mess": "Hello",
-		 "username": "Frank",
-	     },
-	     {
-		 "id": "2",
-		 "mess": "Hola",
-		 "username": "Eric"
-	     }
-	 ];
-        
-        this.props.dispatch(fetchMessages(fakeMess));
+        this.props.dispatch(fetchMessages());
     }
     
     render() {
 	let allmess = [];
 	if (this.props.dc === 1)
 	    allmess = this.props.contents.messes;
-	const messItems = allmess.map((message) =><MIL mess={message.mess} username={message.username} />);
-
-        return (
-		<div>
-		<ul id="messages" onClick={this._onView}>{ messItems }</ul>
-		</div>
+	const messItems = allmess.map((message) =><MIL id={message.id} mess={message.mess} username={message.username} />);
+        return (<div><ul id="messages">{ messItems }</ul></div>
         )
     }
 }
