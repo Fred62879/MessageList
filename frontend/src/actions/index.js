@@ -7,9 +7,11 @@ export const load = txt => {
     };
 }
 
-export const store = (tp, txt, un) => {
+export const store = (tp, messes, item, txt, un) => {
     return {
-        type: tp, // 'MESS_ADD', 'MESS_CLEAR'
+        type: tp, // 'INI_RECEIVE', 'ITEM_RECEIVE', 'MESS_ADD', 'MESS_CLEAR'
+	messes: messes,
+	messitem: item,
         newmess: txt,
 	username: un
     };
@@ -22,15 +24,6 @@ export const display = cho => {
     };
 }
 
-/*
-export const clear = cho => {
-    return {
-	type: at.MESS_CLEAR,
-	clearCho: cho
-    };
-}
-*/
-
 export const login = username => {
     return {
 	type: at.LOGIN,
@@ -42,5 +35,26 @@ export const detail = messdetail => {
     return {
 	type: at.DETAIL_VIEW,
 	content: messdetail
+    }
+}
+
+export function fetchMessages(messages) {
+    /*
+    console.log("fetch");
+    return dispatch => {
+	return fetch('http://localhost:3001/messages')
+	    .then((response) => {
+		console.log(response);
+	    });
+    }
+    */
+    return dispatch => {
+        dispatch(store(at.INI_RECEIVE, messages, {}, "", ""));
+    }
+}
+
+export function fetchMessItem(messitem){
+    return dispatch => {
+        dispatch(store(at.ITEM_RECEIVE, [], messitem, "", ""));
     }
 }

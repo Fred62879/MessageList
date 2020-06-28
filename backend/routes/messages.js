@@ -2,33 +2,37 @@ var express = require('express');
 var { uuid } = require('uuidv4');
 var router = express.Router();
 
-let users = [
-  {
-    id: '1',
-    username: 'smah',
-    firstName: 'stephanie',
-    lastName: 'mah'
-  }
-];
+ const messages = [
+     {
+	 "id": "1",
+	 "mess": "Hello",
+	 "username": "Fred",
+    },
+     {
+	 "id": "2",
+	 "mess": "Hola",
+	 "username": "Eric"
+    }
+ ];
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.setHeader('Content-Type', 'application/json');
-  res.send(users);
+  res.send(messages);
 });
 
-router.get('/:userId', function (req, res, next) {
-  const foundUser = users.find(user => user.id === req.params.userId);
+router.get('/:messageId', function (req, res, next) {
+    const foundUser = messages.find(message => message.id === req.params.userId);
   res.setHeader('Content-Type', 'application/json');
-  res.send(foundUser);
+  res.send(foundMess);
 });
 
 router.post('/', function(req, res, next) {
-  const newUser = req.body;
+  const newMess = req.body;
   newUser.id = uuid();
-  users.push(newUser);
+  messages.push(newMess);
   res.setHeader('Content-Type', 'application/json');
-  res.send(newUser);
+  res.send(newMess);
 });
 
 module.exports = router;

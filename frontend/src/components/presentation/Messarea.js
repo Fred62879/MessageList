@@ -10,7 +10,7 @@ class Messarea extends React.Component {
     }
     
     _onClear = (event) => {
-	this.props.store('MESS_CLEAR', '');
+	this.props.store('MESS_CLEAR', [], {}, '', '');
     }
 
     render() {

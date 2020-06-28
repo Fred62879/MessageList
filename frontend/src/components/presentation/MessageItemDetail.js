@@ -6,11 +6,19 @@ class MessageItemDetail extends Component {
     render(){
         return (
             <div>
-                <div><Link to={`/messages/${this.props.id}`}><b>{this.props.title}</b></Link></div>
-		<div>{this.props.teaser}</div>
+                <h2>{this.props.data.title}</h2>
+                <p>{this.props.data.body}</p>
             </div>
         )
     }
 }
 
-export default MessageItemDetail
+MessageItemDetail.propTypes = {
+    data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired
+    })
+};
+
+export default MessageItemDetail;

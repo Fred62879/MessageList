@@ -1,48 +1,34 @@
 import at from '../constants/actionType'
 import React from 'react';
 import MIL from '../components/presentation/MessageItemListing';
-// import idata from './initData';
 
-const unstyle = {
-// export default unstyle {
-    'font-size': '1em',
-    float: 'left',
-    margin: '0 1em',
-    'text-decoration': 'none',
-    // width: '25%',
-    // float: 'right'
+
+var initialState =  {
+    messes: [],
+    item: {}
 }
 
-const listyle = {
-// export default listyle {
-    'font-size': '1em',
-    float: 'left',
-    margin: '0 0',
-    'text-decoration': 'none',
-};
-
-// const jcontents = JSON.parse(messages).messages;
- const jcontents = [
-    {
-	"mess": "Hello",
-	"username": "Fred",
-    },
-    {
-	"mess": "Hola",
-	"username": "Eric"
-    }
- ];
-
-const licontents = jcontents.map((message) =>
-				 <MIL mess={message.mess} username={message.username} />);
-				 
-const storeReducer = (contents = jcontents, action) => {
+const storeReducer = (contents = initialState, action) => {
+    let updated = Object.assign({}, contents);
+    
     switch (action.type) {
+	
+    case at.INI_RECEIVE:
+	updated['messes'] = action.messes;
+	return updated;
+
+    case at.ITEM_RECEIVE:
+	updated['item'] = action.messitem;
+	return updated;
+	
     case at.MESS_ADD:
 	const newm = { mess: action.newmess, username: action.username };
-	return [...contents, newm];
+	updated['messes'] = [...contents.messes, newm];
+	return updated;
+	
     case at.MESS_CLEAR:
-	return [];
+	return contents;
+	
     default:
 	return contents;
     }

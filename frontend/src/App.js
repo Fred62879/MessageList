@@ -9,7 +9,7 @@ import store from './stores/store';
 import Layout from './components/layouts/Layout.js';
 import Home from './components/layouts/Home.js';
 import About from './components/layouts/About.js';
-import MessageItemDetail from './components/presentation/MessageItemDetail';
+import MessArticle from './components/containers/MessArticle';
 
 
 // const App = () => {
@@ -22,7 +22,7 @@ class App extends React.Component {
 		<Layout>
 		<Route exact path="/" component = {Home} />
 		<Route path="/about" component = {About} />
-		<Route path="/messages/:id" component = {MessageItemDetail} />
+		<Route path="/messages/:id" component = {MessArticle} />
 		</Layout>
 		</BrowserRouter>
 		</Provider>
