@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { load, store } from '../actions';
+import { load, store } from '../../actions';
 
 class Messform extends React.Component {
 

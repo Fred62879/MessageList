@@ -1,20 +1,8 @@
-export const increment = amount => {
-    return {
-        type: 'INCREMENT_COUNTER',
-        increment: amount
-    };
-}
-
-export const toggle = cho => {
-    return {
-	type: 'PAGE_SELECT',
-	cho: cho
-    };
-}
+import at from '../constants/actionType';
 
 export const load = txt => {
     return {
-        type: 'MESS_INPUT',
+        type: at.MESS_INPUT,
         input: txt
     };
 }
@@ -29,28 +17,30 @@ export const store = (tp, txt, un) => {
 
 export const display = cho => {
     return {
-        type: 'MESS_DISPLAY',
+        type: at.MESS_DISPLAY,
         displayCho: cho
     };
 }
 
+/*
 export const clear = cho => {
     return {
-	type: 'MESS_CLEAR',
+	type: at.MESS_CLEAR,
 	clearCho: cho
     };
 }
+*/
 
 export const login = username => {
     return {
-	type: 'Login',
+	type: at.LOGIN,
 	username: username
     };
 }
 
-export const zoom = detail => {
+export const detail = messdetail => {
     return {
-	type: 'DETAIL_VIEW',
-	content: detail
+	type: at.DETAIL_VIEW,
+	content: messdetail
     }
 }

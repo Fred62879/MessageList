@@ -53,7 +53,7 @@ body {
     background: #b2ad7f;
 }
 
-.nav li {
+.nav .link {
   text-decoration: none;
   display: block;
   padding: 0.5em;
@@ -61,7 +61,7 @@ body {
   font-size: 1.5em;
 }
 
-.nav a:hover {
+.nav .link:hover {
     color: black;
     background: #a2b9bc /* #1565C0; */;
 }
@@ -160,13 +160,14 @@ h4 {
     list-style: none;
 }
 
-#message {
-    font-size: 1em; 
-    display: none;
-    float: left;
-    margin: 0 0
-}
 
+#message {
+    display: inline-block;
+    font-size: 1em;
+    float: left;
+    margin: 0 0;
+    text-decoration: none
+}
 
 
 @media all and (max-width: 500px) {

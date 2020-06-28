@@ -1,0 +1,8 @@
+export default {
+    MESS_INPUT: 'MESS_INPUT',
+    MESS_ADD: 'MESS_ADD',
+    MESS_CLEAR: 'MESS_CLEAR',
+    MESS_DISPLAY: 'MESS_DISPLAY',
+    DETAIL_VIEW: 'DETAIL_VIEW',
+    LOGIN: 'Login'
+}

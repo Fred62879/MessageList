@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { zoom } from '../actions';
+import { detail } from '../../actions';
 
 class View extends React.Component {
 
     render() {
 	return(<div id="detailarea">
 	       <h3>The message you selected is:</h3>
-	       <p>{this.props.detail}</p>
+	       <p>{this.props.dt}</p>
                </div>);
     }
 }
 
 const mapStateToProps = (state) => {
-    return { dc: state.displayCho, detail: state.detail };
+    return { dc: state.displayCho, dt: state.messdetail };
 }
 
-export default connect(mapStateToProps, { zoom })(View);
+export default connect(mapStateToProps, { detail })(View);
