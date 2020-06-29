@@ -6,7 +6,8 @@ import MIL from '../components/presentation/MessageItemListing';
 var initialState =  {
     messes: [],
     item: {},
-    itemloading: true
+    itemloading: true,
+    input: '',
 }
 
 const storeReducer = (contents = initialState, action) => {
@@ -20,11 +21,11 @@ const storeReducer = (contents = initialState, action) => {
 
     case at.ITEM_RECEIVE:
 	updated['item'] = action.messitem;
-	updated['itemloading'] = false;
+	// updated['itemloading'] = false;
 	return updated;
 
     case at.ITEM_LOADING:
-	updated['itemloading'] = true;
+	// updated['itemloading'] = true;
 	
     case at.MESS_ADD:
 	const newm = { id: action.id, mess: action.newmess, username: action.username };
@@ -35,7 +36,10 @@ const storeReducer = (contents = initialState, action) => {
 	updated['messes'] = action.messes;
 	updated['item'] = action.messitem;	
 	return updated;
-	
+
+    case at.MESS_INPUT:
+	updated['input'] = action.input;
+	return updated;
     default:
 	return contents;
     }

@@ -4,7 +4,7 @@ import inputReducer from '../reducers/inputReducer';
 import storeReducer from '../reducers/storeReducer';
 import displayReducer from '../reducers/displayReducer';
 // import clearReducer from '../reducers/clearReducer';
-import detailReducer from '../reducers/detailReducer';
+// import detailReducer from '../reducers/detailReducer';
 import loginReducer from '../reducers/loginReducer';
 
 const store = createStore(
@@ -13,7 +13,7 @@ const store = createStore(
 	contents: storeReducer,
 	displayCho: displayReducer,
 	// clearCho: clearReducer,
-	detail: detailReducer,
+	// detail: detailReducer,
 	username: loginReducer
     }), applyMiddleware(thunk)
 );

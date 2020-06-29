@@ -13,7 +13,7 @@ class MessArticle extends Component {
 
     render(){
         let { messItem } = this.props;
-	console.log(this.props.itemLoading);
+	// console.log(this.props.itemLoading);
 
         return (
             <div>

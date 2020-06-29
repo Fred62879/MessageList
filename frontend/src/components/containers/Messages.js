@@ -27,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
     display,
     store,
     detail,
+    fetchMessages,
     dispatch
 })
 

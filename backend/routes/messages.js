@@ -16,7 +16,7 @@ const messages = [
 	 "username": "Eric"
     }
 ];
-const idset = Set();
+// const idset = Set();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -34,11 +34,13 @@ router.get('/:messageId', function (req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const newMess = req.body;
-  newMess.id = uuid();
-  messages.push(newMess);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(newMess);
+    const newMess = req.body;
+    console.log("post");
+    console.log(req.body);
+    newMess.id = uuid();
+    messages.push(newMess);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(newMess);
 });
 
 module.exports = router;
