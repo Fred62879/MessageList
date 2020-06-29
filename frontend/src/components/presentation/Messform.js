@@ -2,22 +2,22 @@ import React from 'react';
 import { uuid } from 'uuidv4';
 import at from '../../constants/actionType';
 import { connect } from 'react-redux';
-import { load, store, postMessItem } from '../../actions/messAction';
+import { load, store } from '../../actions/messAction';
+// import { load, store, postMessItem } from '../../actions/messAction';
 
 class Messform extends React.Component {
 
     _onChange = (event) => {
-        // this.props.load(event.target.value);
-	this.props.store(at.MESS_INPUT, [], {}, '', '', '', event.target.value);
+	this.props.load(event.target.value);
+	// this.props.store(at.MESS_INPUT, [], {}, '', '', '', event.target.value);
 	console.log(event.target.value);
-	console.log(this.props.contents.input);
+	// console.log(this.props.contents.input);
     }
 
     _onSubmit = (event) => {
         event.preventDefault();
-        // this.props.store('MESS_ADD', [], {}, uuid(), this.props.input, 'Anonymous');
-	this.props.dispatch(postMessItem(this.props.contents.input, "Anynoumous"));
-	// alert(this.props.input);
+        this.props.store('MESS_ADD', [], {}, uuid(), this.props.input, 'Anonymous');
+	// this.props.dispatch(postMessItem(this.props.contents.input, "Anynoumous"));
     }
 
     render() {
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     load,
     store,
-    postMessItem,
+    // postMessItem,
     dispatch
 })
 

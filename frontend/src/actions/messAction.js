@@ -2,8 +2,8 @@ import at from '../constants/actionType';
 
 export const load = txt => {
     return {
-        type: 'MESS_INPUT',
-        input: "dummy"
+        type: at.MESS_INPUT,
+        input: txt
     };
 }
 
@@ -56,6 +56,7 @@ export function fetchMessages() {
     }
 }
 
+/*
 export function fetchMessItem(id) {
     return dispatch => {
         return fetch(`http://localhost:3001/messages/${id}`).then((response) => {
@@ -73,7 +74,9 @@ export function messItemLoading() {
         type: at.ITEM_LOADING
     }
 }
+*/
 
+/*
 export function postMessItem(mess, un) {
     return dispatch => {
 	return fetch(`http://localhost:3001/messages`, {
@@ -99,3 +102,4 @@ export function postMessItem(mess, un) {
 	}).catch( (e) => console.log(e) );
     }
 }
+*/

@@ -1,14 +1,14 @@
 import React, { Component} from 'react';
 import MessageItemDetail from '../presentation/MessageItemDetail';
 import { connect } from 'react-redux'
-import { messItemLoading, fetchMessItem } from '../../actions/messAction'
+// import { messItemLoading, fetchMessItem } from '../../actions/messAction'
 
 
 class MessArticle extends Component {
     
     componentDidMount() {
 	console.log(this.props.match.params.id);
-        this.props.dispatch(fetchMessItem(this.props.match.params.id));
+        // this.props.dispatch(fetchMessItem(this.props.match.params.id));
     }
 
     render(){
