@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { toggle } from '../../actions/messAction';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 
@@ -18,13 +16,5 @@ class Layout extends React.Component {
 	)
     }
 }
-
-/*
-const mapStateToProps = (state) => {
-    return { page: state.page };
-}
-
-export default connect(mapStateToProps, { toggle })(Layout);
-*/
 
 export default Layout;

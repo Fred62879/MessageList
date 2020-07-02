@@ -4,29 +4,18 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 
 class MessageItemListing extends Component {
-
-    getEventTarget(e) {
-	e = e || window.event;
-	return e.target || e.srcElement; 
-    }
-    
-    _onView = (event) => {
-	// var target = this.getEventTarget(event);
-	// this.props.detail(target.innerHTML);
-	
-    }
     
     render() {
 	let id = this.props.id;
-	console.log("***");
-	console.log(id);
-	console.log("***");
         return (
 	    <div>
 		<li id="message">
-	  	  {this.props.mess}
-		  <i>({this.props.username})</i>
-		  <Link class="link" to={`/messages/${id}`}>More Detail</Link>
+	  	{this.props.mess}
+		<i>({this.props.username})</i>
+		<div class="options">
+		<Link class="link" to={`/messages/detail/${id}`}>More Detail</Link>
+		<Link class="link" to={`/messages/update/${id}`}>Editing</Link>
+		</div>
 		</li>
 		<br></br>
             </div>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import MIL from '../presentation/MessageItemListing';
-import { display, store, detail, fetchMessages } from '../../actions/messAction';
+import { fetchMessages } from '../../actions/messAction';
 
 class Messages extends Component {
 
@@ -24,12 +24,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    display,
-    store,
-    detail,
     fetchMessages,
     dispatch
 })
 
-// export default connect(mapStateToProps, { display, store, detail })(Messages);
 export default connect(mapStateToProps, mapDispatchToProps)(Messages);

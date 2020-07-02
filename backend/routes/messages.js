@@ -1,46 +1,81 @@
-var express = require('express');
-var { uuid } = require('uuidv4');
-var router = express.Router();
+const express = require('express');
+const { uuid } = require('uuidv4');
+const router = express.Router();
+// const db = require("../db");
+const mongoose = require('mongoose')
+const Mess = require('../model/messSchema.js');
 
 
-const ids = ["1", "2"];
-const messages = [
-     {
-	 "id": "1",
-	 "mess": "Hello",
-	 "username": "Fred",
-    },
-     {
-	 "id": "2",
-	 "mess": "Hola",
-	 "username": "Eric"
-    }
-];
-// const idset = Set();
+// ** Mongo db manipulation
+const uri = 'mongodb+srv://m001-student:m001-mongodb-basics@sandbox-wu78a.mongodb.net/message?retryWrites=true&w=majority';
 
-/* GET users listing. */
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+mongoose.connection.on('connected', () => {
+    console.log("mongo connected");
+});
+
+
+
+// ** RESRful routes
 router.get('/', function (req, res, next) {
-  // res.setHeader('Content-Type', 'application/json');
-    // res.send(messages);
-    res.status(200).send({
-      data: messages
+    Mess.find((err, allmess) => {
+	if (err) { console.log(err); return; }
+	res.status(200).send({
+	    data: allmess
+	});
     })
 });
 
-router.get('/:messageId', function (req, res, next) {
+router.put('/update/:messageId', (req, res, next) => {
+    /*
     const foundMess = messages.find(message => message.id === req.params.messageId);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(foundMess);
+    const newmess = req.body.mess;
+    foundMess.mess = newmess;
+    res.status(200).send({
+	data: foundMess
+    });
+    */
+    Mess.findOneAndUpdate({ id: req.params.messageId }, {mess: req.body.mess}, (err, res) => {
+	if (err) console.log(err);
+	else return res;
+    });
+});
+
+router.get('/detail/:messageId', function (req, res, next) {
+    // const foundMess = messages.find(message => message.id === req.params.messageId);
+    Mess.find({ id: req.params.messageId }, (err, foundMess) => {
+	if (err) { console.log(err); return; }
+	res.setHeader('Content-Type', 'application/json');
+	console.log(foundMess[0]);
+	res.status(200).send({
+	    data: foundMess[0]
+	});
+    });
 });
 
 router.post('/', function(req, res, next) {
-    const newMess = req.body;
-    console.log("post");
-    console.log(req.body);
+    const postMess = req.body;
+    postMess.id = uuid();
+    console.log(postMess);
+
+    const newMess = new Mess(postMess);
+    /*
     newMess.id = uuid();
     messages.push(newMess);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(newMess);
+    */
+    console.log(newMess);
+    newMess.save(err => {
+	if (err) { console.log("ERROR" + err); return; }
+	res.status(200).send({
+	    data: newMess
+	});
+    });
 });
+
+
 
 module.exports = router;
