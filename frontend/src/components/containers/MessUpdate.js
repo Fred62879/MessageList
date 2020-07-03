@@ -1,7 +1,9 @@
 import React, { Component} from 'react';
+import at from '../../constants/actionType';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import Home from '../layouts/Home.js';
-import { uload, fetchMessItem, updateMessItem } from '../../actions/messAction';
+import { uload, redirect, fetchMessItem, updateMessItem } from '../../actions/messAction';
 
 
 class MessUpdate extends Component {
@@ -18,10 +20,19 @@ class MessUpdate extends Component {
         event.preventDefault();
 	this.props.updateMessItem(this.props.uinput, this.props.match.params.id);
 	this.props.uload('');
+	this.props.redirect(at.REDIRECT, '/');
     }
 
     render() {
         let { messItem } = this.props;
+	
+	if (this.props.link !== '') {
+	    const url = this.props.link;
+	    this.props.redirect(at.RSREDIRECT, '');
+	    console.log(url);
+	    return <Redirect to={url} />
+	}
+	
         return (
 		<div>
 		<p>Your original message is {messItem.mess}</p>
@@ -40,9 +51,9 @@ class MessUpdate extends Component {
 const mapStateToProps = state => {
     return {
         messItem: state.contents.item,
-	uinput: state.uinput
+	uinput: state.uinput,
+	link: state.link
     }
 }
 
-export default connect(mapStateToProps, { uload, fetchMessItem, updateMessItem })(MessUpdate);
-// export default connect(mapStateToProps)(MessUpdate)
+export default connect(mapStateToProps, { uload, redirect, fetchMessItem, updateMessItem })(MessUpdate);

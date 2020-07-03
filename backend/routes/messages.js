@@ -31,14 +31,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.put('/update/:messageId', (req, res, next) => {
-    /*
-    const foundMess = messages.find(message => message.id === req.params.messageId);
-    const newmess = req.body.mess;
-    foundMess.mess = newmess;
-    res.status(200).send({
-	data: foundMess
-    });
-    */
     Mess.findOneAndUpdate({ id: req.params.messageId }, {mess: req.body.mess}, (err, res) => {
 	if (err) console.log(err);
 	else return res;
@@ -46,7 +38,6 @@ router.put('/update/:messageId', (req, res, next) => {
 });
 
 router.get('/detail/:messageId', function (req, res, next) {
-    // const foundMess = messages.find(message => message.id === req.params.messageId);
     Mess.find({ id: req.params.messageId }, (err, foundMess) => {
 	if (err) { console.log(err); return; }
 	res.setHeader('Content-Type', 'application/json');
@@ -60,14 +51,7 @@ router.get('/detail/:messageId', function (req, res, next) {
 router.post('/', function(req, res, next) {
     const postMess = req.body;
     postMess.id = uuid();
-    console.log(postMess);
-
     const newMess = new Mess(postMess);
-    /*
-    newMess.id = uuid();
-    messages.push(newMess);
-    */
-    console.log(newMess);
     newMess.save(err => {
 	if (err) { console.log("ERROR" + err); return; }
 	res.status(200).send({
@@ -75,7 +59,5 @@ router.post('/', function(req, res, next) {
 	});
     });
 });
-
-
 
 module.exports = router;

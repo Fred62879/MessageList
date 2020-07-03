@@ -9,13 +9,19 @@ class MessageItemListing extends Component {
 	let id = this.props.id;
         return (
 	    <div>
-		<li id="message">
-	  	{this.props.mess}
-		<i>({this.props.username})</i>
-		<div class="options">
-		<Link class="link" to={`/messages/detail/${id}`}>More Detail</Link>
-		<Link class="link" to={`/messages/update/${id}`}>Editing</Link>
-		</div>
+		<li class="messageli">
+		  <div class="item1">
+	  	    {this.props.mess}
+	          </div>
+		  <div class="item1">
+		    <i>({this.props.username})</i>
+		  </div>
+		  <div class="item2">
+		    <Link class="link" to={`/messages/detail/${id}`}>More Detail</Link>
+		  </div>
+	 	  <div class="item2">
+		    <Link class="link" to={`/messages/update/${id}`}>Editing</Link>
+		  </div>
 		</li>
 		<br></br>
             </div>

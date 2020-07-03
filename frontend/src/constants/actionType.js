@@ -9,7 +9,9 @@ export default {
     MESS_ADD: 'MESS_ADD',
     MESS_CLEAR: 'MESS_CLEAR',
     MESS_DISPLAY: 'MESS_DISPLAY',
-    
+
+    REDIRECT: 'REDIRECT',
+    RSREDIRECT: 'RSREDIRECT',
     DETAIL_VIEW: 'DETAIL_VIEW',
     LOGIN: 'Login'
 }

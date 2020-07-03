@@ -39,6 +39,13 @@ export const display = cho => {
     };
 }
 
+export const redirect = (type, url) => {
+    return {
+	type: type,
+	link: url
+    }
+}
+
 export const login = username => {
     return {
 	type: at.LOGIN,
