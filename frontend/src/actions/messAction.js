@@ -125,7 +125,7 @@ export function updateMessItem(newmess, id) {
 	return fetch(`http://localhost:3001/messages/update/${id}`, {
 	    method: 'PUT',
 	    headers: {
-		'Accept': 'application/json',
+		    'Accept': 'application/json',
     		'Content-Type': 'application/json',
 	    },
 	    body: JSON.stringify({
